@@ -1,20 +1,37 @@
-import { useState } from 'react'
-import './App.css'
-import { useSelector } from 'react-redux'
-import { Home } from './Page/Home/Home';
+import "./App.css";
+import { useSelector } from "react-redux";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./Page/Home/Home";
+import PokemonDetails from "./Page/PokemonDetails/PokemonDetails";
+import Search from "./Components/Search/Search";
+import Bookmarks from "./Components/Bookmarks/Bookmarks";
 
 function App() {
-  const [count, setCount] = useState(0)
-  const { pokemon } = useSelector((state) => state.PokemonSlice);
-  console.log(pokemon);
 
+  const routers = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />
+    },
+    {
+      path: "/details/:id",
+      element: <PokemonDetails />
+    },
+    {
+      path: "/search",
+      element: <Search />
+    },
+    {
+      path: "/bookmarks",
+      element: <Bookmarks />
+    }
+  ]);
 
   return (
     <>
-      <h1>Hello world</h1>
-      <Home/>
+      <RouterProvider router={routers} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

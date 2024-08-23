@@ -3,7 +3,8 @@ import React from 'react'
 
 
 const initialState = {
-    pokemon: ["pokemon", 12, 23]
+    pokemon: [],
+    searchByNamePokemon: []
 }
 
 const PokemonSlice = createSlice({
@@ -12,10 +13,12 @@ const PokemonSlice = createSlice({
     reducers: {
         setPokemon: (state, actions) => {
             state.pokemon = actions.payload || []
+        },
+        setSearchByNamePokemon: (state, actions) => {
+            state.searchByNamePokemon = actions.payload || []
         }
     }
 })
 
-export const { setPokemon } = PokemonSlice.actions
-
+export const { setPokemon, setSearchByNamePokemon } = PokemonSlice.actions
 export default PokemonSlice.reducer;
