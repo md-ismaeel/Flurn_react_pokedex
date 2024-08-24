@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
-import PokemonCard from "../PokemonCard/PokemonCard";
+import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
-import Loading from "../Loading/Loading";
+import Loading from "../../Components/Loading/Loading";
 import { setSearchByNamePokemon } from "../../Redux/Slice/PokemonSlice";
 
 
@@ -30,9 +30,10 @@ export default function Search() {
                 dispatch(setSearchByNamePokemon(response.data))
                 console.log(response.data);
             } catch (err) {
-                console.error("Error occurred while fetching API by name!!,", err);
+                console.error("ThugBoss_Error while fetching API by name!" + err.message);
                 setError("Pokémon not found or there was an issue with the request!!", err?.message);
                 dispatch(setSearchByNamePokemon([]))
+                return;
             } finally {
                 setLoading(false);
             }
@@ -81,7 +82,6 @@ export default function Search() {
                     )
                 }
             </ul>
-            {/* {loading && (<h1 className='text-xl text-teal-500 text-center mb-10 mt-4'>Loading...</h1>)} */}
             {loading && <Loading color="#00BFFF" loading={true} />}
             {error && <p className='text-xl text-red-500 text-center mb-10 mt-4'>{error}</p>}
         </section>
