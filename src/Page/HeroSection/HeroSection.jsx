@@ -4,7 +4,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { FaBookmark } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/Loading/Loading";
-import SearchBYTypes from "../../Components/SearchByTypes/SearchBYTypes";
+import SearchBYTypes from "../../Components/SearchByTypes/SearchByType";
 import SearchByGeneration from "../../Components/SearchByGeneration/SearchByGeneration";
 import logo from "../../../public/pokemon-23.svg"
 
