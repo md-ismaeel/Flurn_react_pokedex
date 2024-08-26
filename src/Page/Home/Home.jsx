@@ -126,7 +126,7 @@ export default function Home() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [handleScroll]);
 
-    if (loading) return <Loading color="#00BFFF" loading={true} />;
+    // if (loading) return <Loading color="#00BFFF" loading={true} />;
     if (error) return <p className="text-red-500">{error}</p>;
 
     return (
@@ -146,6 +146,7 @@ export default function Home() {
                         </h1>
                     )}
                 </ul>
+                {loading && <Loading color="#00BFFF" loading={true} />}
             </section>
         </>
     );

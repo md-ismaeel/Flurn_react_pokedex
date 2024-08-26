@@ -8,6 +8,7 @@ import { useGetBackgroundClass, useGetBackgroundGradientsClass } from "../../Hoo
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { CiBookmark } from "react-icons/ci";
 import { FaBookmark } from "react-icons/fa";
+import PokemonDetailObject from "../../Components/Details/PokemonDetailObject";
 
 export default function PokemonDetails() {
     const { pokemonDetailsObj } = useSelector((state) => state.PokemonSlice);
@@ -39,6 +40,13 @@ export default function PokemonDetails() {
         return () => dispatch(setPokemonDetailsObj({}));
     }, [id, dispatch]);
 
+    useEffect(() => {
+        if (pokemonDetailsObj) {
+            document.title = pokemonDetailsObj?.name || 'Pokédex';
+        }
+        return () => document.title = "Pokédex"
+    }, [pokemonDetailsObj])
+
     if (loading) return <Loading color="#00BFFF" loading={true} />;
     if (error) return <p className="text-red-500">{error}</p>;
     if (!pokemonDetailsObj) return null;
@@ -46,12 +54,12 @@ export default function PokemonDetails() {
     return (
         <section className="w-full h-auto flex flex-col justify-center items-center">
             <li
-                className={`relative w-[500px] h-[350px] p-4 text-white rounded-t-xl border shadow-md overflow-hidden transition-all duration-300 ease-in-out ${useGetBackgroundGradientsClass(
+                className={`relative w-[550px] h-[360px] p-4 text-white rounded-t-xl border shadow-md overflow-hidden transition-all duration-300 ease-in-out ${useGetBackgroundGradientsClass(
                     pokemonDetailsObj?.types
-                )} hover:shadow-xl mt-10 list-none`}
+                )} hover:shadow-xl mt-5 list-none`}
             >
                 <div className="absolute flex justify-center items-center gap-2 top-4 right-5 text-3xl">
-                    <span>{`#${pokemonDetailsObj?.id}`}</span>
+                    <span>{`#${pokemonDetailsObj?.id}` || ""}</span>
                     <span className="text-4xl cursor-pointer">
                         <CiBookmark />
                     </span>
@@ -64,8 +72,7 @@ export default function PokemonDetails() {
                         />
                     </span>
                     <span>
-                        {pokemonDetailsObj?.name?.charAt(0).toUpperCase() +
-                            pokemonDetailsObj?.name?.slice(1)}
+                        {pokemonDetailsObj?.name ? pokemonDetailsObj?.name?.charAt(0).toUpperCase() + pokemonDetailsObj?.name?.slice(1) : "Unknown"}
                     </span>
                 </div>
 
@@ -76,16 +83,16 @@ export default function PokemonDetails() {
                             className="w-full flex justify-center items-center gap-2"
                         >
                             <p
-                                className={`${useGetBackgroundClass([type,])} 
-                                w-[100px] h-[40px] text-md flex justify-center items-center rounded-full mb-1`}
+                                className={`${useGetBackgroundClass([type])} 
+                                w-[100px] h-[40px] text-md flex justify-center items-center rounded-full mb-1 capitalize`}
                             >
-                                {type.type?.name[0].toUpperCase() + type?.type?.name.slice(1)}
+                                {type?.type?.name}
                             </p>
                         </div>
                     ))}
                 </div>
 
-                <div className="absolute w-[80%] h-[80%] flex justify-center items-center right-1 top-14">
+                <div className="absolute w-[75%] h-[80%] flex justify-center items-center right-1 top-14">
                     <img
                         src={
                             pokemonDetailsObj?.sprites?.other?.home?.front_default ||
@@ -96,8 +103,8 @@ export default function PokemonDetails() {
                     />
                 </div>
             </li>
-            <div className="absolute bottom-12 w-[500px] min-h-[200px] bg-slate-200 rounded-3xl">
-
+            <div className="w-[550px] min-h-[250px] z-10 bg-white rounded-3xl mt-[-50px] mb-5">
+                <PokemonDetailObject pokemonDetailsObj={pokemonDetailsObj} />
             </div>
         </section>
     );

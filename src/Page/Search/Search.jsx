@@ -62,7 +62,7 @@ export default function Search() {
                 <input
                     type="text"
                     ref={queryRef}
-                    placeholder="Search By Name..."
+                    placeholder="Search By Name and id..."
                     className="w-[500px] h-12 px-4 border border-gray-300 rounded-lg outline-none focus:ring-4 focus:ring-amber-200 focus:border-transparent transition-all duration-200 text-base placeholder-gray-400"
                 />
                 <button

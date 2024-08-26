@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPokemonTypes, setSelectedType } from '../../Redux/Slice/PokemonSlice';
-import Loading from '../Loading/Loading';
 
 export default function SearchByTypes() {
     const { pokemonTypes, selectedType } = useSelector((state) => state.PokemonSlice);

@@ -10,7 +10,7 @@ const override = {
 
 const Loading = ({ color = "#00BFFF", loading = true }) => {
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-[200] bg-gray-200 bg-opacity-95">
+        <div className="fixed inset-0 flex items-center justify-center z-[200] bg-gray-200 bg-opacity-90">
             <div className="flex flex-col items-center">
                 <ClipLoader
                     color={color}

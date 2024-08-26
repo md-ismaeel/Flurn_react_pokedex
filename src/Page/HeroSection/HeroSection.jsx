@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/Loading/Loading";
 import SearchBYTypes from "../../Components/SearchByTypes/SearchBYTypes";
 import SearchByGeneration from "../../Components/SearchByGeneration/SearchByGeneration";
+import logo from "../../../public/pokemon-23.svg"
 
 export default function HeroSection() {
     const [loading, setLoading] = useState(false);
@@ -25,8 +26,11 @@ export default function HeroSection() {
     return (
         <>
             {loading && <Loading color="#00BFFF" loading={true} />}
-            <section className="w-full h-[170px] flex flex-col justify-center items-center gap-5 border mb-4 bg-slate-100">
-                <div className="text-3xl text-center font-semibold mt-2">Pokédex</div>
+            <section className="w-full h-[180px] flex flex-col justify-center items-center gap-5 border mb-4 bg-slate-100">
+                <div className="">
+                    {/* Pokédex */}
+                    <img src={logo} className="w-[100%] h-[60px] flex justify-center items-center cursor-pointer" />
+                </div>
                 <div className="w-full flex justify-center items-center gap-4">
                     <IoSearchOutline
                         onClick={() => navigate("/search")}
