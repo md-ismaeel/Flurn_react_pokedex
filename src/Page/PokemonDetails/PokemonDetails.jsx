@@ -2,23 +2,24 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { setPokemonDetailsObj } from "../../Redux/Slice/PokemonSlice";
+import { setBookMarks, setPokemonDetailsObj } from "../../Redux/Slice/PokemonSlice";
 import Loading from "../../Components/Loading/Loading";
 import { useGetBackgroundClass, useGetBackgroundGradientsClass } from "../../Hooks/backgroundClass";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { CiBookmark } from "react-icons/ci";
-import { FaBookmark } from "react-icons/fa";
+import { GoBookmarkFill } from "react-icons/go";
 import PokemonDetailObject from "../../Components/Details/PokemonDetailObject";
 
 export default function PokemonDetails() {
-    const { pokemonDetailsObj } = useSelector((state) => state.PokemonSlice);
+    const { pokemonDetailsObj, bookMarks } = useSelector((state) => state.PokemonSlice);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [isBookmarked, setIsBookmarked] = useState(false);
 
     const navigate = useNavigate();
     const { id } = useParams();
 
+    // Fetch Pokémon data by ID
     const fetchPokemonById = async () => {
         if (loading) return;
         setLoading(true);
@@ -45,7 +46,24 @@ export default function PokemonDetails() {
             document.title = pokemonDetailsObj?.name || 'Pokédex';
         }
         return () => document.title = "Pokédex"
-    }, [pokemonDetailsObj])
+    }, [pokemonDetailsObj]);
+
+    const handleToggle = () => {
+        if (isBookmarked) {
+            const updatedBookmarks = bookMarks.filter((bookmarked) => bookmarked.id !== pokemonDetailsObj.id)
+            dispatch(setBookMarks(updatedBookmarks));
+        } else {
+            dispatch(setBookMarks([...bookMarks, pokemonDetailsObj]));
+        }
+        setIsBookmarked(!isBookmarked);
+    };
+
+    useEffect(() => {
+        if (pokemonDetailsObj) {
+            const isInBookmarks = bookMarks.some((bookmarked) => bookmarked.id === pokemonDetailsObj.id);
+            setIsBookmarked(isInBookmarks);
+        }
+    }, [pokemonDetailsObj, bookMarks]);
 
     if (loading) return <Loading color="#00BFFF" loading={true} />;
     if (error) return <p className="text-red-500">{error}</p>;
@@ -60,8 +78,8 @@ export default function PokemonDetails() {
             >
                 <div className="absolute flex justify-center items-center gap-2 top-4 right-5 text-3xl">
                     <span>{`#${pokemonDetailsObj?.id}` || ""}</span>
-                    <span className="text-4xl cursor-pointer">
-                        <CiBookmark />
+                    <span className="text-4xl cursor-pointer" onClick={handleToggle}>
+                        {isBookmarked ? <GoBookmarkFill className="text-slate-700" /> : <GoBookmarkFill className="text-white" />}
                     </span>
                 </div>
                 <div className="absolute flex justify-center items-center gap-4 top-5 left-4 text-4xl font-semibold">
@@ -71,8 +89,8 @@ export default function PokemonDetails() {
                             className=" text-yellow-500 hover:text-yellow-600 text-4xl cursor-pointer font-semibold"
                         />
                     </span>
-                    <span>
-                        {pokemonDetailsObj?.name ? pokemonDetailsObj?.name?.charAt(0).toUpperCase() + pokemonDetailsObj?.name?.slice(1) : "Unknown"}
+                    <span className="capitalize">
+                        {pokemonDetailsObj?.name ? pokemonDetailsObj?.name : "Unknown"}
                     </span>
                 </div>
 
@@ -92,7 +110,7 @@ export default function PokemonDetails() {
                     ))}
                 </div>
 
-                <div className="absolute w-[75%] h-[80%] flex justify-center items-center right-1 top-14">
+                <div className="absolute w-[75%] h-[80%] flex justify-center items-center right-1 top-20">
                     <img
                         src={
                             pokemonDetailsObj?.sprites?.other?.home?.front_default ||

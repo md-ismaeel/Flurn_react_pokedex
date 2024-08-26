@@ -1,41 +1,45 @@
 import { configureStore } from "@reduxjs/toolkit";
-import PokemonSlice from "../Slice/PokemonSlice"
+import PokemonSlice from "../Slice/PokemonSlice";
 
 const loadState = () => {
     try {
-        const saveData = localStorage.getItem("user");
+        const saveData = localStorage.getItem("listed_pokemon");
         if (saveData === null) {
-            return undefined
+            return undefined;
         }
-        return JSON.parse(saveData)
+        const parsedData = JSON.parse(saveData);
+        return parsedData
     } catch (err) {
-        return undefined
+        console.error("Failed to load state from localStorage:", err);
+        localStorage.removeItem("listed_pokemon");
+        return undefined;
     }
-}
+};
+
 
 const saveState = (state) => {
     try {
-        const { pokemon } = state.PokemonSlice;
+        const { bookMarks, listed, pokemon } = state.PokemonSlice;
         const saveData = JSON.stringify({
-            PokemonSlice: { pokemon }
-        })
-        localStorage.getItem("user", saveData)
-
+            PokemonSlice: { bookMarks, listed },
+        });
+        localStorage.setItem("listed_pokemon", saveData);
     } catch (err) {
-        console.log("failed to save data in localStorage", err);
-
+        console.error("Failed to save data to localStorage:", err);
     }
-}
+};
 
-const persistedState = loadState()
+
+const persistedState = loadState();
 
 export const store = configureStore({
     reducer: {
-        PokemonSlice
+        PokemonSlice,
     },
-    preloadedState: persistedState
-})
+    preloadedState: persistedState,
+});
 
+// Subscribe to store updates to save state to localStorage
 store.subscribe(() => {
-    saveState(store.getState())
-})
+    saveState(store.getState());
+});

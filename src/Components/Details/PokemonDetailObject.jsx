@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import About from "./About";
 import BaseStats from "./BaseStats";
 import Evolution from "./Evolution";
-import Moves from "./Move";
+import DetailsMoves from "./DetailsMoves";
 
 export default function PokemonDetailObject({ pokemonDetailsObj }) {
-    console.log("PokemonDetailObject => pokemonDetailsObj", pokemonDetailsObj);
     const { height, weight, abilities, stats, id, moves } = pokemonDetailsObj;
+    // console.log("PokemonDetailObject => pokemonDetailsObj", pokemonDetailsObj);
 
     const [pokedexObject] = useState(["ABOUT", "BASE STATS", "EVOLUTION", "MOVES"]);
     const [activeTab, setActiveTab] = useState("ABOUT");
@@ -43,7 +43,7 @@ export default function PokemonDetailObject({ pokemonDetailsObj }) {
                 {activeTab === "ABOUT" && <About height={height} weight={weight} abilities={abilities} />}
                 {activeTab === "BASE STATS" && <BaseStats stats={stats} />}
                 {activeTab === "EVOLUTION" && <Evolution EvoId={id} />}
-                {activeTab === "MOVEs" && <Moves moves={moves} />}
+                {activeTab === "MOVES" && <DetailsMoves moves={moves} />}
             </div>
         </>
     );

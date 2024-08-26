@@ -3,6 +3,9 @@ import { useGetBackgroundClass, useGetBackgroundGradientsClass } from "../../Hoo
 
 export default function PokemonCard({ item }) {
     // console.log("pokemonCard Item", item);
+    if (!item) {
+        return <div className='w-full text-center'>Item is Undefined</div>
+    }
 
     return (
         <li className={`relative w-[290px] h-60 p-4 text-white rounded-xl border shadow-md overflow-hidden transition-all duration-300 ease-in-out ${useGetBackgroundGradientsClass(item.types)} hover:shadow-xl hover:scale-105 list-none`}>

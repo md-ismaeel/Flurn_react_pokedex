@@ -17,7 +17,7 @@ function debounce(func, wait) {
 }
 
 export default function Home() {
-    const { pokemon, selectedType, selectedGeneration } = useSelector((state) => state.PokemonSlice);
+    const { pokemon, selectedType = "All", selectedGeneration = "All" } = useSelector((state) => state.PokemonSlice);
     const [offset, setOffset] = useState(0);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -32,7 +32,7 @@ export default function Home() {
         try {
             let newPokemon = [];
             if (selectedType !== "All") {
-                const url = `https://pokeapi.co/api/v2/type/${selectedType}`;
+                const url = `https://pokeapi.co/api/v2/type/${selectedType ? selectedType : ""}`;
                 const response = await axios.get(url);
                 const results = response.data.pokemon;
 
@@ -48,7 +48,7 @@ export default function Home() {
                 setOffset((prevOffset) => prevOffset + 10);
 
             } else if (selectedGeneration !== "All") {
-                const url = `https://pokeapi.co/api/v2/generation/${selectedGeneration}`;
+                const url = `https://pokeapi.co/api/v2/generation/${selectedGeneration ? selectedGeneration : ""}`;
                 const response = await axios.get(url);
                 const pokemonSpecies = response.data.pokemon_species;
 

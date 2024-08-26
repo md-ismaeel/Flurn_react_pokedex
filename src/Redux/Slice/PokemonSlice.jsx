@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import React, { act } from "react";
 
 const initialState = {
     pokemon: [],
@@ -8,8 +7,8 @@ const initialState = {
     pokemonGeneration: [],
     selectedType: "All",
     selectedGeneration: "All",
-    booksMarks: [],
-    pokemonDetailsObj: {}
+    bookMarks: [],
+    pokemonDetailsObj: null,
 };
 
 const PokemonSlice = createSlice({
@@ -17,29 +16,30 @@ const PokemonSlice = createSlice({
     initialState,
     reducers: {
         setPokemon: (state, actions) => {
-            state.pokemon = actions.payload || [];
+            state.pokemon = actions.payload;
         },
         setSearchByNamePokemon: (state, actions) => {
-            state.searchByNamePokemon = actions.payload || [];
+            state.searchByNamePokemon = actions.payload;
         },
         setPokemonTypes: (state, actions) => {
-            state.pokemonTypes = actions.payload || [];
+            state.pokemonTypes = actions.payload;
         },
         setSelectedType: (state, actions) => {
             state.selectedType = actions.payload;
         },
         setPokemonGeneration: (state, actions) => {
-            state.pokemonGeneration = actions.payload || []
+            state.pokemonGeneration = actions.payload;
         },
         setSelectedGeneration: (state, actions) => {
-            state.selectedGeneration = actions.payload
+            state.selectedGeneration = actions.payload;
         },
-        setBookMarks: (state, actions) => {
-            state.booksMarks = actions.payload || []
-        },
+
         setPokemonDetailsObj: (state, actions) => {
             state.pokemonDetailsObj = actions.payload;
-        }
+        },
+        setBookMarks: (state, actions) => {
+            state.bookMarks = actions.payload || [];
+        },
     },
 });
 
@@ -50,7 +50,8 @@ export const {
     setSelectedType,
     setPokemonGeneration,
     setSelectedGeneration,
+    setPokemonDetailsObj,
     setBookMarks,
-    setPokemonDetailsObj
+    // setListed,
 } = PokemonSlice.actions;
 export default PokemonSlice.reducer;

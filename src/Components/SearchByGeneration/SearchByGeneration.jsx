@@ -8,6 +8,7 @@ export default function SearchByGeneration() {
     const { pokemonGeneration, selectedGeneration } = useSelector((state) => state.PokemonSlice);
     const dispatch = useDispatch();
 
+
     function handleChange(e) {
         const newGen = e.target.value;
         if (newGen !== selectedGeneration) {
@@ -38,8 +39,8 @@ export default function SearchByGeneration() {
                     <option value="All">All Generation</option>
                     {pokemonGeneration &&
                         pokemonGeneration.map((gen) => (
-                            <option key={gen.name} value={gen.name}>
-                                {gen.name[0].toUpperCase() + gen.name.slice(1)}
+                            <option key={gen.name} value={gen.name} className="capitalize">
+                                {gen.name}
                             </option>
                         ))}
                 </select>

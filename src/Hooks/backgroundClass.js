@@ -13,3 +13,7 @@ export const useGetBackgroundGradientsClass = (types) => {
     return backgroundGradients[primaryType] || backgroundGradients.default;
 };
 
+export const useGetBackgroundForLOvelUp = (color) => {
+    if (!color) return backgroundGradients.default
+    return backgroundGradients[color]
+}

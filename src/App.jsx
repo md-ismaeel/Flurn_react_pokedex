@@ -5,7 +5,6 @@ import PokemonDetails from "./Page/PokemonDetails/PokemonDetails";
 import Search from "./Page/Search/Search";
 import Bookmarks from "./Page/Bookmarks/Bookmarks";
 import NotFound from "./Page/NotFound/NotFound";
-import { useEffect } from "react";
 
 function App() {
 
@@ -33,6 +32,11 @@ function App() {
     {
       path: "/bookmarks",
       element: <Bookmarks />,
+      errorElement: <NotFound />
+    },
+    {
+      path: "/bookmarks/details/:id",
+      element: <PokemonDetails />,
       errorElement: <NotFound />
     }
   ]);
