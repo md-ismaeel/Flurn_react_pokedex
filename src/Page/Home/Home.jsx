@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPokemon } from '../../Redux/Slice/PokemonSlice';
 import HeroSection from '../HeroSection/HeroSection';
-import Loading from '../../Components/Loading/Loading';
+import {Loading} from '../../Components/Loading/Loading';
 
 // Debounce function
 function debounce(func, wait) {

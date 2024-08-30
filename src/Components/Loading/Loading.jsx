@@ -1,5 +1,6 @@
 import React from "react";
 import ClipLoader from "react-spinners/ClipLoader";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const override = {
     // display: "block",
@@ -8,7 +9,7 @@ const override = {
 
 };
 
-const Loading = ({ color = "#00BFFF", loading = true }) => {
+export const Loading = ({ color = "#00BFFF", loading = true }) => {
     return (
         <div className="fixed inset-0 flex items-center justify-center z-[200] bg-gray-200 bg-opacity-90">
             <div className="flex flex-col items-center">
@@ -26,4 +27,17 @@ const Loading = ({ color = "#00BFFF", loading = true }) => {
     );
 };
 
-export default Loading;
+export const loginLoader = ({ color = "#00BFFF", loading = true, size }) => {
+    return (
+        <div className="">
+            <PulseLoader
+                color={color}
+                cssOverride={override}
+                loading={loading}
+                size={size}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+        </div>
+    )
+}

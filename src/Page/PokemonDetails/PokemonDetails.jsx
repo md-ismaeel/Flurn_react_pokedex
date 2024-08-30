@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { setBookMarks, setPokemonDetailsObj } from "../../Redux/Slice/PokemonSlice";
-import Loading from "../../Components/Loading/Loading";
+import {Loading} from "../../Components/Loading/Loading";
 import { useGetBackgroundClass, useGetBackgroundGradientsClass } from "../../Hooks/backgroundClass";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { GoBookmarkFill } from "react-icons/go";

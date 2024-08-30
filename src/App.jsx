@@ -1,14 +1,19 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Home from "./Page/Home/Home";
 import PokemonDetails from "./Page/PokemonDetails/PokemonDetails";
 import Search from "./Page/Search/Search";
 import Bookmarks from "./Page/Bookmarks/Bookmarks";
 import NotFound from "./Page/NotFound/NotFound";
+import Login from "./Page/Login/Login";
+import Register from "./Page/Register/Register";
+
 
 function App() {
+  const { isLogin } = useSelector((state) => state.PokemonSlice)
 
-  const routers = createBrowserRouter([
+  const loggedInRoutes = createBrowserRouter([
     {
       path: "/",
       element: <Home />,
@@ -41,10 +46,22 @@ function App() {
     }
   ]);
 
+  const loggedOutRoutes = createBrowserRouter([
+    {
+      path: "/",
+      element: <Login />,
+      errorElement: <NotFound />
+    }, {
+      path: "/register",
+      element: <Register />,
+      errorElement: <NotFound />
+    }
+  ])
+
 
   return (
     <>
-      <RouterProvider router={routers} />
+      <RouterProvider router={isLogin ? loggedInRoutes : loggedOutRoutes} />
     </>
   );
 }
