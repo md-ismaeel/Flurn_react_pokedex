@@ -31,11 +31,11 @@ export default function SearchByTypes() {
 
     return (
         <>
-            <div className="flex items-center space-x-4">
+            <div className="w-[180px] flex items-center space-x-4">
                 <select
                     value={selectedType}
                     onChange={handleTypeChange}
-                    className="w-32 h-12 border text-lg font-normal border-gray-300 rounded-md px-3 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer"
+                    className="w-full h-12 border text-lg font-normal border-gray-300 rounded-md px-3 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer"
                 >
                     <option value="All">All Types</option>
                     {pokemonTypes && pokemonTypes.map((option) => (

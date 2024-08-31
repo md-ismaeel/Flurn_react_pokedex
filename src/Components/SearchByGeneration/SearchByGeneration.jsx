@@ -34,8 +34,8 @@ export default function SearchByGeneration() {
 
     return (
         <>
-            <div className="flex items-center space-x-4">
-                <select onChange={handleChange} value={selectedGeneration} className="w-42 h-12 border text-lg font-normal border-gray-300 rounded-md px-3 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
+            <div className="w-[180px] lex items-center space-x-4">
+                <select onChange={handleChange} value={selectedGeneration} className="w-full h-12 border text-lg font-normal border-gray-300 rounded-md px-3 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
                     <option value="All">All Generation</option>
                     {pokemonGeneration &&
                         pokemonGeneration.map((gen) => (

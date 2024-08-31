@@ -1,0 +1,35 @@
+/* Extra Small Devices (Phones, Portrait View) */
+@media screen and (max-width: 575.98px) {
+
+    .hero-logo {
+        height: 50px !important;
+        width: 150px !important;
+        margin-top: 10px;
+        margin-right: 20px;
+    }
+
+    .all-icons {
+        flex-direction: column;
+    }
+
+    .refresh-btn {
+        width: 180px !important;
+    }
+
+    .logout-btn {
+        top: 10px !important;
+        right: 6px !important;
+    }
+}
+
+/* Small Devices (Phones, Landscape View) */
+@media screen and (min-width: 576px) and (max-width: 767.98px) {}
+
+/* Medium Devices (Tablets) */
+@media screen and (min-width: 768px) and (max-width: 991.98px) {}
+
+/* Large Devices (Laptops, Desktops) */
+@media screen and (min-width: 992px) and (max-width: 1199.98px) {}
+
+/* Extra Large Devices (Large Desktops) */
+@media screen and (min-width: 1200px) {}

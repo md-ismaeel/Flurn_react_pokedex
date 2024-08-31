@@ -48,7 +48,7 @@ export default function Register() {
     } catch (err) {
       console.warn("ThugBoss-ERROR while registering: " + err);
       setError("ERROR " + err?.message);
-      toast.error(err.response?.data?.message)
+      toast.error(err?.message)
     } finally {
       setLoading(false);
     }
@@ -59,7 +59,7 @@ export default function Register() {
       <section className="w-full min-h-screen flex justify-center items-center">
         <form
           onSubmit={handleSubmit}
-          className="relative w-[95%] h-auto max-w-md flex flex-col justify-start items-center gap-4 border rounded-xl bg-white shadow-2xl py-5"
+          className="register-form relative w-[95%] h-auto max-w-md flex flex-col justify-start items-center gap-4 border rounded-3xl bg-white shadow-2xl py-5"
         >
           <h1 className="text-2xl text-slate-500 font-medium text-center mb-5 mt-1">
             Registration Form
@@ -70,7 +70,7 @@ export default function Register() {
             name="userName"
             onChange={handleChange}
             placeholder="Username"
-            className="w-[80%] h-[45px] rounded-md border px-5 outline-none focus:ring-[3px] focus:border-blue-600 focus:border-none transition-all 1s hover:border-blue-500"
+            className="w-[80%] h-[45px] rounded-md border px-5 outline-none focus:ring-[2.5px] focus:border-blue-200 focus:border-none transition-all 1s hover:border-blue-200"
           />
           <input
             type="email"
@@ -78,7 +78,7 @@ export default function Register() {
             name="email"
             onChange={handleChange}
             placeholder="Email"
-            className="w-[80%] h-[45px] rounded-md border px-5 outline-none focus:ring-[3px] focus:border-blue-600 focus:border-none transition-all 1s hover:border-blue-500"
+            className="w-[80%] h-[45px] rounded-md border px-5 outline-none focus:ring-[2.5px] focus:border-blue-200 focus:border-none transition-all 1s hover:border-blue-200"
           />
           <input
             type="password"
@@ -86,7 +86,7 @@ export default function Register() {
             name="password"
             onChange={handleChange}
             placeholder="Password"
-            className="w-[80%] h-[45px] rounded-md border px-5 outline-none focus:ring-[3px] focus:border-blue-600 focus:border-none transition-all 1s hover:border-blue-500"
+            className="w-[80%] h-[45px] rounded-md border px-5 outline-none focus:ring-[2.5px] focus:border-blue-200 focus:border-none transition-all 1s hover:border-blue-200"
           />
           <button
             type="submit"
@@ -117,7 +117,7 @@ export default function Register() {
             </span>
           </div>
           {error && (
-            <div className="absolute bottom-2 text-md text-red-500 text-center">{error}</div>
+            <div className="absolute bottom-14 text-sm text-red-500 text-center">{error}</div>
           )}
         </form>
       </section>

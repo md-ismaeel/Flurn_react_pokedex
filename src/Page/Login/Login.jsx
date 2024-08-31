@@ -6,6 +6,7 @@ import { BACKEND_END_POINT, requestOptions } from "../../Utils/utils";
 import { useNavigate } from "react-router-dom";
 import PulseLoader from "react-spinners/PulseLoader";
 import { toast } from "material-react-toastify";
+import "./Login.css"
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -48,23 +49,22 @@ export default function Login() {
             if (response?.data?.success) {
                 dispatch(setIsLogin(true));
                 resetForm();
-                // navigate("/");
                 toast.success(response?.data?.message);
             }
         } catch (err) {
             console.warn("Error while login: " + err);
             setError("ERROR: " + err?.message);
-            toast.error(err?.response?.data?.message);
+            toast.error(err?.message);
         } finally {
             setLoading(false);
         }
     }
 
     return (
-        <section className="w-full min-h-screen flex justify-center items-center">
+        <section className="w-full h-auto flex justify-center items-center">
             <form
                 onSubmit={handleSubmit}
-                className="relative w-full max-w-md flex flex-col justify-start items-center gap-4 border rounded-xl bg-white shadow-2xl py-5"
+                className="login-form relative w-full max-w-md flex flex-col justify-start items-center gap-4 border rounded-3xl bg-white shadow-2xl py-5 mt-24"
             >
                 <h1 className="text-xl text-slate-500 font-medium text-center mb-5 mt-5">Login Form</h1>
                 <input
@@ -73,7 +73,7 @@ export default function Login() {
                     name="identifier"
                     onChange={handleChange}
                     placeholder="Email or Username"
-                    className="w-[80%] h-[45px] rounded-md border px-5 outline-none focus:ring-[3px] focus:border-blue-600 focus:border-none transition-all 1s hover:border-blue-500"
+                    className="w-[80%] h-[45px] rounded-md border px-5 outline-none focus:ring-[2.5px] focus:border-blue-200 focus:border-none  hover:border-blue-200 transition-all ease-out"
                 />
                 <input
                     type="password"
@@ -81,7 +81,7 @@ export default function Login() {
                     name="password"
                     onChange={handleChange}
                     placeholder="Password"
-                    className="w-[80%] h-[45px] rounded-md border px-5 outline-none focus:ring-[3px] focus:border-blue-600 focus:border-none transition-all 1s hover:border-blue-500"
+                    className="w-[80%] h-[45px] rounded-md border px-5 outline-none focus:ring-[2.5px] focus:border-blue-200 focus:border-none transition-all 1s ease-out hover:border-blue-200"
                 />
                 <button
                     type="submit"
@@ -105,7 +105,7 @@ export default function Login() {
                         Register
                     </span>
                 </div>
-                {error && (<div className="absolute bottom-2 text-md text-red-500 text-center">{error}</div>)}
+                {error && (<div className="absolute bottom-14 text-sm text-red-500 text-center">{error}</div>)}
             </form>
         </section>
     );

@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Loading } from "../../Components/Loading/Loading";
 import { setSearchByNamePokemon } from "../../Redux/Slice/PokemonSlice";
 import { IoIosClose } from "react-icons/io";
+import { PulseLoader } from "react-spinners";
+import "./Search.css"
 
 export default function Search() {
     const { searchByNamePokemon } = useSelector((state) => state.PokemonSlice);
@@ -69,19 +71,19 @@ export default function Search() {
             </span>
             <form
                 onSubmit={handleSubmit}
-                className="w-full h-auto flex justify-center items-center gap-2 mt-2 py-5"
+                className="search-form w-full h-auto flex justify-center items-center gap-2 mt-2 py-5"
             >
-                <div className="relative">
+                <div className="search-input-div relative w-[40%]">
                     <input
                         type="text"
                         ref={queryRef}
-                        placeholder="Search By Name and ID..."
-                        className="w-[500px] h-12 px-4 border border-gray-300 rounded-lg outline-none focus:ring-4 focus:ring-amber-200 focus:border-transparent transition-all duration-200 text-base placeholder-gray-400"
+                        placeholder="Search by name and id..."
+                        className="w-[100%] h-12 px-4 border border-gray-300 rounded-lg outline-none focus:ring-[2.5px] focus:ring-amber-200 focus:border-transparent transition-all duration-200 text-base placeholder-gray-400"
                     />
                     {query && (
                         <span
                             onClick={handleCancel}
-                            className="absolute top-2 right-2 text-teal-700 text-3xl cursor-pointer"
+                            className="absolute top-2 right-3 text-teal-700 text-3xl cursor-pointer"
                         >
                             <IoIosClose />
                         </span>
@@ -89,9 +91,9 @@ export default function Search() {
                 </div>
                 <button
                     type="submit"
-                    className="h-12 px-6 py-2 bg-gradient-to-br from-amber-500 to-amber-700 hover:from-amber-600 hover:to-amber-800 active:from-amber-700 active:to-amber-900 rounded-lg text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50 text-base tracking-wider"
+                    className="search-btn w-[100px] h-12 flex justify-center items-center px-1 py-2 bg-gradient-to-br from-amber-500 to-amber-700 hover:from-amber-600 hover:to-amber-800 active:from-amber-700 active:to-amber-900 rounded-lg text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50 text-base tracking-wider"
                 >
-                    Search
+                    <span className="w-[75%]">Search</span>{loading ? <PulseLoader size={2} color={"#ffffff"} /> : ""}
                 </button>
             </form>
             <ul className="w-full h-auto flex flex-wrap justify-center items-center gap-5">

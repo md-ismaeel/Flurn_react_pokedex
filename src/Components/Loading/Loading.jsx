@@ -27,17 +27,17 @@ export const Loading = ({ color = "#00BFFF", loading = true }) => {
     );
 };
 
-export const loginLoader = ({ color = "#00BFFF", loading = true, size }) => {
-    return (
-        <div className="">
-            <PulseLoader
-                color={color}
-                cssOverride={override}
-                loading={loading}
-                size={size}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-            />
-        </div>
-    )
-}
+// export const loginLoader = ({ color = "#00BFFF", loading = true, size }) => {
+//     return (
+//         <div className="">
+//             <PulseLoader
+//                 color={color}
+//                 cssOverride={override}
+//                 loading={loading}
+//                 size={size}
+//                 aria-label="Loading Spinner"
+//                 data-testid="loader"
+//             />
+//         </div>
+//     )
+// }

@@ -1,0 +1,13 @@
+@media screen and (max-width:575.98px) {
+    .login-form {
+        width: 95% !important;
+        margin-top: 50px !important;
+        margin-bottom: 50px;
+    }
+
+    .register-form {
+        width: 95% !important;
+        margin-top: 50px !important;
+        margin-bottom: 50px;
+    }
+}
