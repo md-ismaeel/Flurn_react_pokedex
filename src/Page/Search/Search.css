@@ -11,6 +11,14 @@
     .search-btn {
         width: 100px !important;
     }
+
+    .search-sec {
+        width: 86% !important;
+    }
+
+    .back-bookmark {
+        width: 92% !important;
+    }
 }
 
 /* Small Devices (Phones, Landscape View) */
