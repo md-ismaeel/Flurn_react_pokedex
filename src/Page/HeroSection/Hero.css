@@ -13,7 +13,15 @@
     }
 
     .refresh-btn {
-        width: 180px !important;
+        width: 275px !important;
+    }
+
+    .byType {
+        width: 275px !important;
+    }
+
+    .byGeneration {
+        width: 275px !important;
     }
 
     .logout-btn {

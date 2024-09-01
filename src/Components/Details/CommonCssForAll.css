@@ -1,0 +1,32 @@
+@media screen and (max-width:575.98px) {
+    .tabs-container {
+        width: 100% !important;
+        padding: 10px !important;
+    }
+
+    .tabs-btn {
+        padding: 5px 5px !important;
+        font-size: 80% !important;
+    }
+
+    .about-sec {
+        padding: 18px !important;
+    }
+
+    .baseState-sec {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+
+    .states-box {
+        width: 100% !important;
+    }
+
+    .states-name {
+        width: 60% !important;
+    }
+
+    .progress-bar {
+        width: 30%;
+    }
+}

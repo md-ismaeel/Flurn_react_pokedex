@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPokemonGeneration, setSelectedGeneration } from "../../Redux/Slice/PokemonSlice";
 
@@ -34,7 +34,7 @@ export default function SearchByGeneration() {
 
     return (
         <>
-            <div className="w-[180px] lex items-center space-x-4">
+            <div className="byGeneration w-[180px] lex items-center space-x-4">
                 <select onChange={handleChange} value={selectedGeneration} className="w-full h-12 border text-lg font-normal border-gray-300 rounded-md px-3 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
                     <option value="All">All Generation</option>
                     {pokemonGeneration &&

@@ -3,6 +3,7 @@ import About from "./About";
 import BaseStats from "./BaseStats";
 import Evolution from "./Evolution";
 import DetailsMoves from "./DetailsMoves";
+import "./CommonCssForAll.css"
 
 export default function PokemonDetailObject({ pokemonDetailsObj }) {
     const { height, weight, abilities, stats, id, moves } = pokemonDetailsObj;
@@ -19,15 +20,12 @@ export default function PokemonDetailObject({ pokemonDetailsObj }) {
         <>
             <div className="w-full h-auto">
                 <div className="w-full border-b border-slate-300">
-                    <div className="flex justify-between items-center mt-14 px-5 mb-4">
+                    <div className="tabs-container flex justify-between items-center mt-14 px-5 mb-4">
                         {pokedexObject.map((tab, i) => (
                             <button
                                 key={i}
                                 onClick={() => handleSetTab(tab)}
-                                className={`
-                                    px-4 py-2 cursor-pointer font-medium text-sm 
-                                    transition-all duration-300 ease-in-out rounded-md
-                                    active:bg-blue-100 active:scale-95 outline-none
+                                className={`tabs-btn px-4 py-2 cursor-pointer font-medium text-sm transition-all duration-300 ease-in-out rounded-md active:bg-blue-100 active:scale-95 outline-none
                                     ${activeTab === tab
                                         ? "border-b-2 border-blue-500 text-blue-600"
                                         : "text-gray-600 hover:border-b-2 hover:border-blue-300"

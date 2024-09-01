@@ -5,7 +5,7 @@ export default function About({ height, weight, abilities }) {
     const formattedWeight = (weight / 10).toFixed(1);
 
     return (
-        <div className='w-full h-full flex flex-col justify-center items-start gap-1 px-7 mt-7'>
+        <div className='about-sec w-full h-full flex flex-col justify-center items-start gap-1 px-7 mt-7'>
             <p>
                 <span className='text-md text-slate-400 mr-3'>Height:</span>
                 <span className="text-md">{formattedHeight} m</span>

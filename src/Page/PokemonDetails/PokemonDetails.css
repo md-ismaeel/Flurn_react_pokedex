@@ -1,0 +1,18 @@
+@media screen and (max-width:575.98px) {
+    .detail-container {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    .detail-box {
+        width: 97% !important;
+    }
+
+    .all-section-container {
+        width: 97% !important;
+    }
+
+    .pokedex-name {
+        font-size: 25px !important;
+    }
+}

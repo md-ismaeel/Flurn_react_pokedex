@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPokemon } from '../../Redux/Slice/PokemonSlice';
 import HeroSection from '../HeroSection/HeroSection';
-import {Loading} from '../../Components/Loading/Loading';
+import { Loading } from '../../Components/Loading/Loading';
 
 // Debounce function
 function debounce(func, wait) {
@@ -126,8 +126,7 @@ export default function Home() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [handleScroll]);
 
-    // if (loading) return <Loading color="#00BFFF" loading={true} />;
-    if (error) return <p className="text-red-500">{error}</p>;
+    if (error) return <p className="text-red-500 text-center text-xl">{error}</p>;
 
     return (
         <>
@@ -142,7 +141,7 @@ export default function Home() {
                         ))
                     ) : (
                         <h1 className='w-full h-auto flex justify-center items-center text-center text-2xl text-teal-600 mt-20'>
-                            No Pokémon data found!!
+                            Pokémon data not found!!
                         </h1>
                     )}
                 </ul>

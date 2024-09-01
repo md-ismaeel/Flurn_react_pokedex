@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { setBookMarks, setPokemonDetailsObj } from "../../Redux/Slice/PokemonSlice";
-import {Loading} from "../../Components/Loading/Loading";
+import { Loading } from "../../Components/Loading/Loading";
 import { useGetBackgroundClass, useGetBackgroundGradientsClass } from "../../Hooks/backgroundClass";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { GoBookmarkFill } from "react-icons/go";
 import PokemonDetailObject from "../../Components/Details/PokemonDetailObject";
+import "./PokemonDetails.css"
 
 export default function PokemonDetails() {
     const { pokemonDetailsObj, bookMarks } = useSelector((state) => state.PokemonSlice);
@@ -70,9 +71,9 @@ export default function PokemonDetails() {
     if (!pokemonDetailsObj) return null;
 
     return (
-        <section className="w-full h-auto flex flex-col justify-center items-center">
+        <section className="detail-container w-full h-auto flex flex-col justify-center items-center">
             <li
-                className={`relative w-[550px] h-[360px] p-4 text-white rounded-t-xl border shadow-md overflow-hidden transition-all duration-300 ease-in-out ${useGetBackgroundGradientsClass(
+                className={`detail-box relative w-[550px] h-[360px] p-4 text-white rounded-t-xl border shadow-md overflow-hidden transition-all duration-300 ease-in-out ${useGetBackgroundGradientsClass(
                     pokemonDetailsObj?.types
                 )} hover:shadow-xl mt-5 list-none`}
             >
@@ -89,7 +90,7 @@ export default function PokemonDetails() {
                             className=" text-yellow-500 hover:text-yellow-600 text-4xl cursor-pointer font-semibold"
                         />
                     </span>
-                    <span className="capitalize">
+                    <span className="pokedex-name capitalize">
                         {pokemonDetailsObj?.name ? pokemonDetailsObj?.name : "Unknown"}
                     </span>
                 </div>
@@ -121,7 +122,7 @@ export default function PokemonDetails() {
                     />
                 </div>
             </li>
-            <div className="w-[550px] min-h-[250px] z-10 bg-white rounded-3xl mt-[-50px] mb-5">
+            <div className="all-section-container w-[550px] min-h-[250px] z-10 bg-white rounded-3xl mt-[-50px] mb-5">
                 <PokemonDetailObject pokemonDetailsObj={pokemonDetailsObj} />
             </div>
         </section>

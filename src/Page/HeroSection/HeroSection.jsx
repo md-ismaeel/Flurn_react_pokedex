@@ -7,15 +7,17 @@ import { Loading } from "../../Components/Loading/Loading";
 import SearchBYTypes from "../../Components/SearchByTypes/SearchByType";
 import SearchByGeneration from "../../Components/SearchByGeneration/SearchByGeneration";
 import logo from "../../../public/pokemon-23.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "material-react-toastify";
 import axios from "axios";
 import { BACKEND_END_POINT, requestOptions } from "../../Utils/utils";
 import { setIsLogin } from "../../Redux/Slice/PokemonSlice";
 import { PulseLoader } from "react-spinners";
-import "./Hero.css"
+import Cookies from "js-cookie"
+import "./Hero.css";
 
 export default function HeroSection() {
+    const { isLogin } = useSelector((state) => state.PokemonSlice)
     const [loading, setLoading] = useState(false);
     const [isRotating, setIsRotating] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -53,6 +55,12 @@ export default function HeroSection() {
         }
     }
 
+    useEffect(() => {
+        const token = Cookies.get('token');
+        if (!token) dispatch(setIsLogin(false));
+
+    }, [dispatch]);
+
     return (
         <>
             {loading && <Loading color="#00BFFF" loading={true} />}
@@ -81,29 +89,62 @@ export default function HeroSection() {
                     <SearchByGeneration />
                     <button
                         onClick={handleRefresh}
-                        className="refresh-btn w-[140px] h-[45px] flex justify-center items-center bg-green-700 hover:bg-green-800 active:bg-green-900 text-white text-xl rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 transform hover:scale-105 active:scale-100"
+                        className="refresh-btn w-[120px] h-[45px] flex justify-center items-center bg-green-700 hover:bg-green-800 active:bg-green-900 text-white text-xl rounded-md shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 transform hover:scale-105 active:scale-100"
                         aria-label="Refresh page"
                     >
                         <IoMdRefresh
-                            className={`text-3xl font-bold mr-1 transition-transform duration-500 ${isRotating ? "animate-spin" : ""
+                            className={`text-2xl font-bold mr-2 transition-transform duration-500 ${isRotating ? "animate-spin" : ""
                                 }`}
                         />
-                        <span className="text-2xl font-medium">Reset</span>
+                        <span className="text-xl font-medium">Reset</span>
                     </button>
                 </div>
-
                 <button
                     onClick={handleLogout}
-                    className={`logout-btn absolute  top-4 right-4 h-[45px] flex justify-center items-center max-w-sm py-2 px-4 text-white text-md font-medium bg-green-700 rounded-md shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-opacity-50 mt-1 hover:scale-105
-                         ${isLoading ? "opacity-75 cursor-not-allowed" : "hover:bg-green-800 active:bg-green-900"}`}
-                    disabled={loading}
+                    className="w-[112px] h-[45px] absolute top-4 right-2 inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold transition-all duration-150 ease-in-out cursor-pointer rounded-md hover:pl-10 hover:pr-6 bg-green-700 group"
                 >
-
-                    {isLoading ? (
-                        <span className="absolute top-4 right-[90px] flex items-center justify-center">
-                            <PulseLoader size={8} color={"#ffffff"} />
-                        </span>
-                    ) : (<span className="text-[17px] font-medium">Logout</span>)}
+                    <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-green-800 group-hover:h-full"></span>
+                    <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
+                        <svg
+                            className="w-5 h-5 text-white"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            ></path>
+                        </svg>
+                    </span>
+                    <span className="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
+                        <svg
+                            className="w-5 h-5 text-red-600"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            ></path>
+                        </svg>
+                    </span>
+                    <span className="relative w-full h-full text-white text-left transition-colors duration-200 ease-in-out group-hover:text-white">
+                        {isLoading ? (
+                            <span className="absolute top-2 right-0 flex items-center justify-center">
+                                <PulseLoader size={5} color={"#ffffff"} />
+                            </span>
+                        ) : (
+                            "Logout"
+                        )}
+                    </span>
                 </button>
             </section>
         </>

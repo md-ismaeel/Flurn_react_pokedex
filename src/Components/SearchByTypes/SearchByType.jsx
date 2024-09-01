@@ -31,7 +31,7 @@ export default function SearchByTypes() {
 
     return (
         <>
-            <div className="w-[180px] flex items-center space-x-4">
+            <div className="byType w-[180px] flex items-center space-x-4">
                 <select
                     value={selectedType}
                     onChange={handleTypeChange}
