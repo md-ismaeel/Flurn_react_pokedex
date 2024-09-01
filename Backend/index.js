@@ -9,6 +9,7 @@ const routers = require("./Routes/user.routes")
 const corsOptions = {
     origin: [
         "http://localhost:5173",
+        "https://flurnpokedexreact.netlify.app/"
     ],
     credentials: true,
 };
