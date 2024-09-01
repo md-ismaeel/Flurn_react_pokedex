@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
-const mongoUri = process.env.MONGODB_URL
+const mongoUri = process.env.MONGODB_URI
 
 mongoose
     .connect(mongoUri)
