@@ -6,7 +6,7 @@
 
 ## Home Page
 
-![Home Page](/src/assets/Srceenshorts/Screenshot%202024-09-02%20001543.png)
+![Home Page](/src/assets/Srceenshorts/Screenshot%202024-09-01%20231138.png)
 
 ## Login Page
 
