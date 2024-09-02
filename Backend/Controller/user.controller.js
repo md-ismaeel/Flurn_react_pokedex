@@ -87,7 +87,7 @@ async function login(req, res) {
             email: user.email,
         };
 
-        const token = jwt.sign(payload, secretKey, { expiresIn: "24h" });
+        const token = jwt.sign(payload, secretKey, { expiresIn: 7 });
         user.token = `${token}`
         await user.save();
 
