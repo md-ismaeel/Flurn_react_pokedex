@@ -50,14 +50,14 @@ export default function HeroSection() {
         }
     }
 
-    // useEffect(() => {
-    //     const token = Cookies.get('token');
-    //     if (token) {
-    //         dispatch(setIsLogin(true));
-    //     } else {
-    //         dispatch(setIsLogin(false));
-    //     }
-    // }, [dispatch]);
+    useEffect(() => {
+        const token = Cookies.get('token');
+        if (token) {
+            dispatch(setIsLogin(true));
+        } else {
+            dispatch(setIsLogin(false));
+        }
+    }, [dispatch]);
 
 
     return (
