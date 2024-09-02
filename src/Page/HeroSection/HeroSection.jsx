@@ -59,7 +59,7 @@ export default function HeroSection() {
         const token = Cookies.get('token');
         if (!token) dispatch(setIsLogin(false));
 
-    }, [dispatch]);
+    }, [dispatch, isLogin]);
 
     return (
         <>
@@ -100,7 +100,7 @@ export default function HeroSection() {
                     </button>
                 </div>
                 <button
-                    onClick={handleLogout}
+                    onClick={() => handleLogout}
                     className="w-[112px] h-[45px] absolute top-4 right-2 inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold transition-all duration-150 ease-in-out cursor-pointer rounded-md hover:pl-10 hover:pr-6 bg-green-700 group"
                 >
                     <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-green-800 group-hover:h-full"></span>
