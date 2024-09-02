@@ -87,16 +87,16 @@ async function login(req, res) {
             email: user.email,
         };
 
-        const token = jwt.sign(payload, secretKey, { expiresIn: 7 });
+        const token = jwt.sign(payload, secretKey, { expiresIn: 7 * 24 * 60 * 60 });
         user.token = `${token}`
         await user.save();
 
-        const miliSecondIn24hr = 60 * 60 * 24 * 7;
+        const miliSecondIn7days = 7 * 24 * 60 * 60 * 1000;
         res.cookie("token", token, {
             secure: true,
             sameSite: "none",
             path: "/",
-            maxAge: miliSecondIn24hr,
+            maxAge: miliSecondIn7days,
         });
 
         res.status(200).json({
