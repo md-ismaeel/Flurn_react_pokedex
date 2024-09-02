@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    isLogin: false,
     pokemon: [],
     searchByNamePokemon: [],
     pokemonTypes: [],
@@ -10,15 +9,13 @@ const initialState = {
     selectedGeneration: "All",
     bookMarks: [],
     pokemonDetailsObj: null,
+    isUserLogin: false,
 };
 
 const PokemonSlice = createSlice({
     name: "pokeDex",
     initialState,
     reducers: {
-        setIsLogin: (state, actions) => {
-            state.isLogin = actions.payload
-        },
         setPokemon: (state, actions) => {
             state.pokemon = actions.payload;
         },
@@ -44,11 +41,13 @@ const PokemonSlice = createSlice({
         setBookMarks: (state, actions) => {
             state.bookMarks = actions.payload || [];
         },
+        setIsUserLogin: (state, actions) => {
+            state.isUserLogin = actions.payload
+        },
     },
 });
 
 export const {
-    setIsLogin,
     setPokemon,
     setSearchByNamePokemon,
     setPokemonTypes,
@@ -57,5 +56,6 @@ export const {
     setSelectedGeneration,
     setPokemonDetailsObj,
     setBookMarks,
+    setIsUserLogin,
 } = PokemonSlice.actions;
 export default PokemonSlice.reducer;

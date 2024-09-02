@@ -41,9 +41,9 @@ export default function Register() {
       );
       // console.log(response);
       if (response?.data?.success) {
-        navigate("/");
         resetForm();
         toast.success(response?.data?.message);
+        navigate("/");
       }
     } catch (err) {
       console.warn("ThugBoss-ERROR while registering: " + err);
@@ -100,7 +100,7 @@ export default function Register() {
           >
             <span className="text-[17px] font-medium">Sign up</span>{" "}
             {loading ? (
-              <span className="absolute top-4 right-20">
+              <span className="absolute top-[17px] right-[105px]">
                 <PulseLoader size={8} color={"#ffffff"} />
               </span>
             ) : (

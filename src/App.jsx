@@ -11,7 +11,9 @@ import Register from "./Page/Register/Register";
 
 
 function App() {
-  const { isLogin } = useSelector((state) => state.PokemonSlice)
+  const isUserLogin = useSelector((state) => state.PokemonSlice.isUserLogin)
+  console.log("isUserLogin", isUserLogin);
+
 
   const loggedInRoutes = createBrowserRouter([
     {
@@ -61,7 +63,7 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={isLogin ? loggedInRoutes : loggedOutRoutes} />
+      <RouterProvider router={isUserLogin && isUserLogin ? loggedInRoutes : loggedOutRoutes} />
     </>
   );
 }

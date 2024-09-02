@@ -19,9 +19,9 @@ const loadState = () => {
 
 const saveState = (state) => {
     try {
-        const { bookMarks, listed, isLogin } = state.PokemonSlice;
+        const { bookMarks, isLogin } = state.PokemonSlice;
         const saveData = JSON.stringify({
-            PokemonSlice: { isLogin, bookMarks, listed },
+            PokemonSlice: { isLogin, bookMarks },
         });
         localStorage.setItem("listed_pokemon", saveData);
     } catch (err) {

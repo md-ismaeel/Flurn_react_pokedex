@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { setIsLogin } from "../../Redux/Slice/PokemonSlice";
+import { setIsUserLogin } from "../../Redux/Slice/PokemonSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { BACKEND_END_POINT, requestOptions } from "../../Utils/utils";
@@ -40,6 +40,7 @@ export default function Login() {
             const conditionBasedData = isEmail
                 ? { email: userNameOrEmail }
                 : { userName: userNameOrEmail };
+
             const userObj = {
                 ...conditionBasedData,
                 password,
@@ -55,7 +56,7 @@ export default function Login() {
             if (response?.data?.success) {
                 resetForm();
                 toast.success(response?.data?.message);
-                dispatch(setIsLogin(true));
+                dispatch(setIsUserLogin(true));
             }
         } catch (err) {
             console.warn("Error while login: " + err);
@@ -102,7 +103,7 @@ export default function Login() {
                 >
                     <span className="text-[17px] font-medium">Login</span>
                     {loading && (
-                        <span className="absolute top-4 right-[90px] flex items-center justify-center">
+                        <span className="absolute top-[18px] right-[115px] flex items-center justify-center">
                             <PulseLoader size={8} color={"#ffffff"} />
                         </span>
                     )}
