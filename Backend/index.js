@@ -21,11 +21,12 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 
 const mongoUri = process.env.MONGODB_URI
+// const mongoUriCompass = process.env.MONGODB_COMPASS
 
 mongoose
     .connect(mongoUri)
     .then(() => console.log("MongoDB connection established successfully"))
-    .catch((err) => console.log("BOSS-ERROR occurred while connecting to the database: " + err));
+    .catch((err) => console.log("ThugBOSS-ERROR occurred while connecting to the database: " + err));
 
 app.use("/api/v1/user", routers)
 
