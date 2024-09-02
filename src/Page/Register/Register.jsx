@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BACKEND_END_POINT, requestOptions } from "../../Utils/utils";
 import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
+import { PiUserCircleFill } from "react-icons/pi";
 import axios from "axios";
 import { toast } from "material-react-toastify";
 
@@ -61,9 +62,15 @@ export default function Register() {
           onSubmit={handleSubmit}
           className="register-form relative w-[95%] h-auto max-w-md flex flex-col justify-start items-center gap-4 border rounded-3xl bg-white shadow-2xl py-5"
         >
-          <h1 className="text-2xl text-slate-500 font-medium text-center mb-5 mt-1">
+          {/* <h1 className="text-2xl text-slate-500 font-medium text-center mb-5 mt-1">
             Registration Form
-          </h1>
+          </h1> */}
+          <div className="flex flex-col justify-center items-center mt-2 mb-2">
+            <h1>
+              <PiUserCircleFill className="text-7xl text-slate-600" />
+            </h1>
+            <h1 className="text-2xl font-semibold text-slate-500">Registration Form</h1>
+          </div>
           <input
             type="text"
             value={userObj.userName}

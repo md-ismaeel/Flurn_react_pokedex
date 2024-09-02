@@ -6,6 +6,7 @@ import { BACKEND_END_POINT, requestOptions } from "../../Utils/utils";
 import { useNavigate } from "react-router-dom";
 import PulseLoader from "react-spinners/PulseLoader";
 import { toast } from "material-react-toastify";
+import { PiUserCircleFill } from "react-icons/pi";
 import "./Login.css";
 
 export default function Login() {
@@ -73,9 +74,15 @@ export default function Login() {
                 onSubmit={handleSubmit}
                 className="login-form relative w-full max-w-md flex flex-col justify-start items-center gap-4 border rounded-3xl bg-white shadow-2xl py-5"
             >
-                <h1 className="text-xl text-slate-500 font-medium text-center mb-5 mt-5">
+                {/* <h1 className="text-xl text-slate-500 font-medium text-center mb-5 mt-5">
                     Login Form
-                </h1>
+                </h1> */}
+                <div className="flex flex-col justify-center items-center mt-2 mb-2">
+                    <h1>
+                        <PiUserCircleFill className="text-7xl text-slate-600" />
+                    </h1>
+                    <h1 className="text-2xl font-semibold text-slate-500">Login</h1>
+                </div>
                 <input
                     type="text"
                     value={userNameOrEmail}
