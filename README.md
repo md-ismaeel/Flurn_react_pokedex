@@ -1,35 +1,34 @@
-# Hospital_Management Full-Stack Project
+# Pokémon Project
 
 ## Hosted Link
 
-[Click here to view the project](https://hospital-management-pearl-alpha.vercel.app/)
+[Click here to view the project](https://flurnpokedexreact.netlify.app/)
 
 ## Home Page
-![Home Page](./img/Screenshot%202024-08-20%20200209.png)
 
-## Messages
-![Messages](./img/Screenshot%202024-08-20%20200225.png)
-
-## Appointments Page
-![Appointments](./img/Screenshot%202024-08-20%20200305.png)
+![Home Page](/src/assets/Srceenshorts/Screenshot%202024-09-02%20001543.png)
 
 ## Login Page
-![Appointments](./img/Screenshot%202024-08-20%20200323.png)
 
-## Dashboard
-![Dashboard](./img/Screenshot%202024-08-20%20200531.png)
+![Login Page](/src/assets/Srceenshorts/Screenshot%202024-09-03%20000116.png)
 
-## Doctors
-![doctors](./img/Screenshot%202024-08-20%20200615.png)
+## Search Page
+
+![Search Page](/src/assets/Srceenshorts/Screenshot%202024-09-02%20001543.png)
+
+## Bookmarks Page
+
+![Bookmarks Page](/src/assets/Srceenshorts/Screenshot%202024-09-02%20001558.png)
+
+## Details Page
+
+![Details Page](/src/assets/Srceenshorts/Screenshot%202024-09-02%20001625.png)
 
 ## Features
 
-- **Patient Management:** Add, update, and delete patient records.
-- **Appointment Scheduling:** Schedule, reschedule, and cancel appointments.
-- **Doctor Management:** Manage doctor profiles, including specialties and availability.
-- **Medical Records:** Securely store and retrieve patient medical histories.
-- **Billing System:** Generate and manage invoices and payments.
-- **User Authentication:** Secure login and role-based access control.
+- **Pokémon Search:** Search for Pokémon by name or type.
+- **Pokémon Details:** View detailed information about each Pokémon, including stats, abilities, and evolutions.
+- **Favorites:** Bookmark your favorite Pokémon for quick access.
 - **Responsive Design:** Accessible on various devices, including desktops, tablets, and smartphones.
 
 ## Tech Stack
@@ -63,7 +62,7 @@
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/md-ismaeel/hospital_manageMent_fullStack.git
+   git clone https://github.com/md-ismaeel/Flurn_react_pokedex.git
 
    ```
 
@@ -77,4 +76,4 @@
 
 # Author
 
-- Md Ismail
+- Md Ismail -->
