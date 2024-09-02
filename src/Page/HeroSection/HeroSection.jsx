@@ -17,53 +17,52 @@ import Cookies from "js-cookie"
 import "./Hero.css";
 
 export default function HeroSection() {
-    const { isLogin } = useSelector((state) => state.PokemonSlice)
-    const [loading, setLoading] = useState(false);
-    const [isRotating, setIsRotating] = useState(false);
+    const { isLogin } = useSelector((state) => state.PokemonSlice);
     const [isLoading, setIsLoading] = useState(false);
+    const [isRotating, setIsRotating] = useState(false);
+    const [logout, setLogout] = useState(false)
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleRefresh = () => {
         setIsRotating(true);
-        setLoading(true);
         setTimeout(() => {
             setIsRotating(false);
-            window.location.reload();
+            window.location.reload();  // Consider reloading data instead of the entire page if possible
         }, 2000);
     };
 
     async function handleLogout() {
-        setIsLoading(true);
+        setLogout(true);
         try {
-            const response = await axios.get(
-                `${BACKEND_END_POINT}/logout`,
-                requestOptions
-            );
-            // console.log("response", response);
-
+            const response = await axios.get(`${BACKEND_END_POINT}/logout`, requestOptions);
             if (response?.data?.success) {
                 dispatch(setIsLogin(false));
                 toast.success(response?.data?.message);
-                // localStorage.clear()
+                Cookies.remove('token');
+                // Optionally clear cookies or localStorage if needed
             }
         } catch (err) {
-            console.warn("ERROR =>" + err);
-            toast.error(err?.response?.data?.message);
+            console.warn("ERROR =>", err);
+            toast.error(err?.response?.data?.message || "An error occurred.");
         } finally {
-            setIsLoading(false);
+            setLogout(false);
         }
     }
 
-    useEffect(() => {
-        const token = Cookies.get('token');
-        if (!token) dispatch(setIsLogin(false));
+    // useEffect(() => {
+    //     const token = Cookies.get('token');
+    //     if (token) {
+    //         dispatch(setIsLogin(true));
+    //     } else {
+    //         dispatch(setIsLogin(false));
+    //     }
+    // }, [dispatch]);
 
-    }, [dispatch, isLogin]);
 
     return (
         <>
-            {loading && <Loading color="#00BFFF" loading={true} />}
+            {isLoading && <Loading color="#00BFFF" loading={true} />}
             <section className="hero-container relative w-full min-h-[180px] flex flex-col justify-center items-center gap-5 border mb-4 bg-slate-100">
                 <div className="">
                     {/* Pokédex */}
@@ -100,7 +99,7 @@ export default function HeroSection() {
                     </button>
                 </div>
                 <button
-                    onClick={() => handleLogout}
+                    onClick={handleLogout}
                     className="w-[112px] h-[45px] absolute top-4 right-2 inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold transition-all duration-150 ease-in-out cursor-pointer rounded-md hover:pl-10 hover:pr-6 bg-green-700 group"
                 >
                     <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-green-800 group-hover:h-full"></span>
@@ -137,7 +136,7 @@ export default function HeroSection() {
                         </svg>
                     </span>
                     <span className="relative w-full h-full text-white text-left transition-colors duration-200 ease-in-out group-hover:text-white">
-                        {isLoading ? (
+                        {logout ? (
                             <span className="absolute top-2 right-0 flex items-center justify-center">
                                 <PulseLoader size={5} color={"#ffffff"} />
                             </span>

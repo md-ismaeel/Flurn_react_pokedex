@@ -3,7 +3,7 @@ import { BACKEND_END_POINT, requestOptions } from "../../Utils/utils";
 import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import axios from "axios";
-import { toast } from 'material-react-toastify';
+import { toast } from "material-react-toastify";
 
 export default function Register() {
   const [userObj, setUserObj] = useState({
@@ -43,12 +43,12 @@ export default function Register() {
       if (response?.data?.success) {
         navigate("/");
         resetForm();
-        toast.success(response?.data?.message)
+        toast.success(response?.data?.message);
       }
     } catch (err) {
       console.warn("ThugBoss-ERROR while registering: " + err);
       setError("ERROR " + err?.message);
-      toast.error(err?.message)
+      toast.error(err?.message);
     } finally {
       setLoading(false);
     }
@@ -117,7 +117,9 @@ export default function Register() {
             </span>
           </div>
           {error && (
-            <div className="absolute bottom-14 text-sm text-red-500 text-center">{error}</div>
+            <div className="absolute bottom-14 text-sm text-red-500 text-center">
+              {error}
+            </div>
           )}
         </form>
       </section>

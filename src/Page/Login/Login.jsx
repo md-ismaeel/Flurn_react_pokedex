@@ -6,7 +6,7 @@ import { BACKEND_END_POINT, requestOptions } from "../../Utils/utils";
 import { useNavigate } from "react-router-dom";
 import PulseLoader from "react-spinners/PulseLoader";
 import { toast } from "material-react-toastify";
-import "./Login.css"
+import "./Login.css";
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -37,19 +37,25 @@ export default function Login() {
 
         try {
             const isEmail = userNameOrEmail.includes("@");
-            const conditionBasedData = isEmail ? { email: userNameOrEmail } : { userName: userNameOrEmail };
+            const conditionBasedData = isEmail
+                ? { email: userNameOrEmail }
+                : { userName: userNameOrEmail };
             const userObj = {
                 ...conditionBasedData,
-                password
-            }
+                password,
+            };
             // console.log(userObj);
 
-            const response = await axios.post(`${BACKEND_END_POINT}/login`, userObj, requestOptions);
+            const response = await axios.post(
+                `${BACKEND_END_POINT}/login`,
+                userObj,
+                requestOptions
+            );
 
             if (response?.data?.success) {
-                dispatch(setIsLogin(true));
                 resetForm();
                 toast.success(response?.data?.message);
+                dispatch(setIsLogin(true));
             }
         } catch (err) {
             console.warn("Error while login: " + err);
@@ -61,12 +67,14 @@ export default function Login() {
     }
 
     return (
-        <section className="w-full h-auto flex justify-center items-center">
+        <section className="w-full min-h-screen flex justify-center items-center">
             <form
                 onSubmit={handleSubmit}
-                className="login-form relative w-full max-w-md flex flex-col justify-start items-center gap-4 border rounded-3xl bg-white shadow-2xl py-5 mt-24"
+                className="login-form relative w-full max-w-md flex flex-col justify-start items-center gap-4 border rounded-3xl bg-white shadow-2xl py-5"
             >
-                <h1 className="text-xl text-slate-500 font-medium text-center mb-5 mt-5">Login Form</h1>
+                <h1 className="text-xl text-slate-500 font-medium text-center mb-5 mt-5">
+                    Login Form
+                </h1>
                 <input
                     type="text"
                     value={userNameOrEmail}
@@ -86,7 +94,10 @@ export default function Login() {
                 <button
                     type="submit"
                     className={`relative w-[80%] h-[45px] flex justify-center items-center max-w-sm py-2 px-4 text-white text-sm font-medium bg-blue-500 rounded-md shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 mt-1
-                         ${loading ? "opacity-75 cursor-not-allowed" : "hover:bg-blue-600 active:bg-blue-700"}`}
+                         ${loading
+                            ? "opacity-75 cursor-not-allowed"
+                            : "hover:bg-blue-600 active:bg-blue-700"
+                        }`}
                     disabled={loading}
                 >
                     <span className="text-[17px] font-medium">Login</span>
@@ -105,7 +116,11 @@ export default function Login() {
                         Register
                     </span>
                 </div>
-                {error && (<div className="absolute bottom-14 text-sm text-red-500 text-center">{error}</div>)}
+                {error && (
+                    <div className="absolute bottom-14 text-sm text-red-500 text-center">
+                        {error}
+                    </div>
+                )}
             </form>
         </section>
     );
