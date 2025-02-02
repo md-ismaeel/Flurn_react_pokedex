@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setPokemonTypes, setSelectedType } from '../../Redux/Slice/PokemonSlice';
 
 export default function SearchByTypes() {
-    const { pokemonTypes, selectedType } = useSelector((state) => state.PokemonSlice);
+    const { pokemonTypes, selectedType } = useSelector((state) => state?.pokeDex);
     const dispatch = useDispatch();
 
     const handleTypeChange = (e) => {

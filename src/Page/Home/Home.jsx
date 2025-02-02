@@ -17,7 +17,7 @@ function debounce(func, wait) {
 }
 
 export default function Home() {
-    const { pokemon, selectedType = "All", selectedGeneration = "All" } = useSelector((state) => state.PokemonSlice);
+    const { pokemon, selectedType = "All", selectedGeneration = "All" } = useSelector((state) => state?.pokeDex);
     const [offset, setOffset] = useState(0);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);

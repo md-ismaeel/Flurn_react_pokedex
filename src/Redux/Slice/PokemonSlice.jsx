@@ -9,13 +9,20 @@ const initialState = {
     selectedGeneration: "All",
     bookMarks: [],
     pokemonDetailsObj: null,
-    isUserLogin: false,
+    user: null,
+    isLogin: false
 };
 
 const PokemonSlice = createSlice({
     name: "pokeDex",
     initialState,
     reducers: {
+        setUser: (state, actions) => {
+            state.user = actions.payload;
+        },
+        setIsLogin: (state, actions) => {
+            state.isLogin = actions.payload
+        },
         setPokemon: (state, actions) => {
             state.pokemon = actions.payload;
         },
@@ -56,6 +63,7 @@ export const {
     setSelectedGeneration,
     setPokemonDetailsObj,
     setBookMarks,
-    setIsUserLogin,
+    setUser,
+    setIsLogin
 } = PokemonSlice.actions;
 export default PokemonSlice.reducer;

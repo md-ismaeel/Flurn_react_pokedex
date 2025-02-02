@@ -11,7 +11,7 @@ import PokemonDetailObject from "../../Components/Details/PokemonDetailObject";
 import "./PokemonDetails.css"
 
 export default function PokemonDetails() {
-    const { pokemonDetailsObj, bookMarks } = useSelector((state) => state.PokemonSlice);
+    const { pokemonDetailsObj, bookMarks } = useSelector((state) => state?.pokeDex);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);

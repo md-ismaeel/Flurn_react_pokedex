@@ -1,48 +1,40 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-require("dotenv").config();
-
-const routers = require("./Routes/user.routes")
+import express from "express";
+import mongoose from "mongoose";
+import "dotenv/config";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import router from "./Routes/userRoutes.js";
 
 const corsOptions = {
-    origin: [
-        "http://localhost:5173",
-        "https://flurnpokedexreact.netlify.app"
-    ],
+    origin: ["http://localhost:5173", "https://flurnpokedexreact.netlify.app"],
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-};
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}
 
-const port = process.env.PORT || 10000;
+const PORT = process?.env?.PORT || 10000;
+// const mongoUri = process?.env?.MONGODB_URI;
+const mongoUri = "mongodb://localhost:27017/pokemon";
 const app = express();
 app.use(express.json());
-app.use(cors(corsOptions));
 app.use(cookieParser());
-
-const mongoUri = process.env.MONGODB_URI
-// const mongoUriCompass = process.env.MONGODB_COMPASS
+app.use(cors(corsOptions));
 
 mongoose
-    .connect(mongoUri)
-    .then(() => console.log("MongoDB connection established successfully"))
-    .catch((err) => console.log("ThugBOSS-ERROR occurred while connecting to the database: " + err));
+    .connect(`${mongoUri}`)
+    .then(() => console.log("mongoDb connection stablish successfully!!"))
+    .catch((err) => console.log(`Error-Occurred ${err.message}`));
 
-app.use("/api/v1/user", routers)
+app.use("/api/v1/user", router);
 
 app.use("/*", (req, res) => {
     return res.status(404).json({
         success: false,
-        message: "path not found!!"
-    })
-})
+        message: "path not found!!",
+    });
+});
 
-app.listen(port, (err) => {
-    if (err) {
-        console.log("Error occurred while starting the server: " + err);
-    } else {
-        console.log(`Server is up and running on port ${port}`);
-    }
+app.listen(PORT, (err) => {
+    if (err) console.log(err.message);
+    console.log(`Server is up and running on port ${PORT}`);
 });

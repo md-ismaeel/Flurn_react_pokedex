@@ -8,11 +8,11 @@ import SearchBYTypes from "../../Components/SearchByTypes/SearchByType";
 import SearchByGeneration from "../../Components/SearchByGeneration/SearchByGeneration";
 import logo from "../../../public/pokemon-23.svg";
 import { useDispatch, useSelector } from "react-redux";
+import LogOut from "../Authentication/LogOut/LogOut";
 import "./Hero.css";
-import Logout from "../../Components/Logout/Logout";
 
 export default function HeroSection() {
-    const { isUserLogin } = useSelector((state) => state.PokemonSlice);
+    const { isLogin } = useSelector((state) => state?.pokeDex);
     const [isLoading, setIsLoading] = useState(false);
     const [isRotating, setIsRotating] = useState(false);
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ export default function HeroSection() {
     return (
         <>
             {isLoading && <Loading color="#00BFFF" loading={true} />}
-            <section className="hero-container relative w-full min-h-[180px] flex flex-col justify-center items-center gap-5 border mb-4 bg-slate-100">
+            <section className="fixed z-[1000] hero-container w-full min-h-[180px] flex flex-col justify-center items-center gap-5 border mb-4 bg-slate-100">
                 <div className="">
                     {/* Pokédex */}
                     <img
@@ -66,8 +66,10 @@ export default function HeroSection() {
                         <span className="text-xl font-medium">Reset</span>
                     </button>
                 </div>
-                <Logout />
+                <LogOut />
+
             </section>
+            <h1 className="pb-[200px]"></h1>
         </>
     );
 }

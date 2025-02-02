@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPokemonGeneration, setSelectedGeneration } from "../../Redux/Slice/PokemonSlice";
 
 export default function SearchByGeneration() {
-    const { pokemonGeneration, selectedGeneration } = useSelector((state) => state.PokemonSlice);
+    const { pokemonGeneration, selectedGeneration } = useSelector((state) => state?.pokeDex);
     const dispatch = useDispatch();
 
 

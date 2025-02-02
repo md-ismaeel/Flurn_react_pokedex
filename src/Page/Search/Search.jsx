@@ -11,7 +11,7 @@ import { PulseLoader } from "react-spinners";
 import "./Search.css"
 
 export default function Search() {
-    const { searchByNamePokemon } = useSelector((state) => state.PokemonSlice);
+    const { searchByNamePokemon } = useSelector((state) => state?.pokeDex);
     const dispatch = useDispatch();
     const queryRef = useRef(null);
     const [query, setQuery] = useState("");
