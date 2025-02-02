@@ -13,8 +13,8 @@ const corsOptions = {
 }
 
 const PORT = process?.env?.PORT || 10000;
-// const mongoUri = process?.env?.MONGODB_URI;
-const mongoUri = "mongodb://localhost:27017/pokemon";
+const mongoUri = process?.env?.MONGODB_URI;
+// const mongoUri = "mongodb://localhost:27017/pokemon";
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
