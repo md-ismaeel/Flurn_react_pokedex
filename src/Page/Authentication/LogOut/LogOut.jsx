@@ -40,7 +40,7 @@ export default function LogOut() {
         <>
             <button
                 onClick={handleLogout}
-                className={`w-[130px] h-[45px] absolute top-4 right-10 rounded-full border bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium capitalized hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-500`}
+                className={`w-[130px] h-[45px] absolute top-2 right-2 rounded-full border text-white font-medium capitalized bg-green-800 hover:bg-green-900 active:bg-green-950`}
             >
                 {logout ? (
                     <div className="relative w-full h-full flex justify-end items-center">

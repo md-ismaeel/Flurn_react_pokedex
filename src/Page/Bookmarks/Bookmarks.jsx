@@ -29,7 +29,7 @@ export default function Bookmarks() {
               </NavLink>
             ))
           ) : (
-            <div className="flex flex-col justify-center items-center">
+            <div className="w-full min-h-screen flex flex-col justify-center items-center">
               <h1 className="w-full h-auto flex justify-center items-center text-center text-2xl text-teal-600 mt-20">
                 Pokémon Listed data doesn't Exits!!
               </h1>

@@ -31,8 +31,8 @@ export default function HeroSection() {
     return (
         <>
             {isLoading && <Loading color="#00BFFF" loading={true} />}
-            <section className="fixed z-[1000] hero-container w-full min-h-[180px] flex flex-col justify-center items-center gap-5 border mb-4 bg-slate-100">
-                <div className="">
+            <section className="fixed z-[1000] hero-container w-full min-h-[180px] flex flex-col justify-center items-center gap-5 border pb-5 mb-4 bg-slate-100">
+                <div className="-ml-20 md:ml-0">
                     {/* Pokédex */}
                     <img
                         src={logo}

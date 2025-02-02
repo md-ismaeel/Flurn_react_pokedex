@@ -131,7 +131,7 @@ export default function Home() {
     return (
         <>
             <HeroSection />
-            <section className='w-full h-auto flex flex-col justify-center items-center'>
+            <section className='w-full h-auto flex flex-col justify-center items-center pt-32 md:pt-0'>
                 <ul className='w-full h-auto flex flex-wrap justify-center items-center gap-4 mb-10'>
                     {Array.isArray(pokemon) && pokemon.length > 0 ? (
                         pokemon.map((item) => (
