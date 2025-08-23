@@ -66,7 +66,7 @@ export default function HeroSection() {
                         <span className="text-xl font-medium">Reset</span>
                     </button>
                 </div>
-                <LogOut />
+                {/* <LogOut /> */}
 
             </section>
             <h1 className="pb-[200px]"></h1>
