@@ -48,32 +48,32 @@ function App() {
     },
   ]);
 
-  const loggedOutRoutes = createBrowserRouter([
-    {
-      path: "/",
-      element: <Login />,
-      errorElement: <NotFound />,
-    },
-    {
-      path: "/sign-up",
-      element: <Register />,
-      errorElement: <NotFound />,
-    },
-    {
-      path: "/confirm-email/:token",
-      element: <ConfirmEmail />,
-      errorElement: <NotFound />,
-    },
-    {
-      path: "/resetPassword",
-      element: <ResetPassword />,
-      errorElement: <NotFound />,
-    },
-  ]);
+  // const loggedOutRoutes = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <Login />,
+  //     errorElement: <NotFound />,
+  //   },
+  //   {
+  //     path: "/sign-up",
+  //     element: <Register />,
+  //     errorElement: <NotFound />,
+  //   },
+  //   {
+  //     path: "/confirm-email/:token",
+  //     element: <ConfirmEmail />,
+  //     errorElement: <NotFound />,
+  //   },
+  //   {
+  //     path: "/resetPassword",
+  //     element: <ResetPassword />,
+  //     errorElement: <NotFound />,
+  //   },
+  // ]);
 
   return (
     <>
-      <RouterProvider router={isLogin ? loggedInRoutes : loggedOutRoutes} />
+      <RouterProvider router={loggedInRoutes} />
     </>
   );
 }
